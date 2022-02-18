@@ -34,6 +34,7 @@ export class RegisterComponent implements OnInit {
         console.log(res,"resss");
         if (res.success) {
           this._snackBar.open(res.message, "ok");
+
           this.formgroup.reset();
         } else {
           this._snackBar.open(res.message, "ok");

@@ -21,6 +21,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './intercepters/auth.interceptor';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatSelectModule} from '@angular/material/select';
+import { ForoforComponent } from './components/forofor/forofor.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import {MatSelectModule} from '@angular/material/select';
     RegisterComponent,
     HeaderComponent,
     SidebarComponent,
+    ForoforComponent,
   ],
   imports: [
     BrowserModule,

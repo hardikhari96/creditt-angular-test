@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ForoforComponent } from './components/forofor/forofor.component';
 import { AuthGuard } from './guard/auth/auth.guard';
 import { LoginComponent } from './pages/login/login.component';
 import { PagesComponent } from './pages/pages.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
     path: "register",
     component: RegisterComponent,
   },
+
   {
     path: 'dashboard',
     component: PagesComponent,
@@ -28,7 +30,11 @@ const routes: Routes = [
       path: '',
       loadChildren: () => PagesModule
     }]
-  }
+  },
+  {
+    path: '**', pathMatch: 'full',
+    component: ForoforComponent
+  },
 ];
 
 @NgModule({
