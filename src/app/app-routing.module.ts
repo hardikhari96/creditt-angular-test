@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guard/auth/auth.guard';
 import { LoginComponent } from './pages/login/login.component';
 import { PagesComponent } from './pages/pages.component';
 import { PagesModule } from './pages/pages.module';
@@ -7,30 +8,31 @@ import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
   {
-    path:"",
-    redirectTo:"login",
+    path: "",
+    redirectTo: "login",
     pathMatch: 'full'
   },
   {
-    path:"login",
-    component:LoginComponent,
+    path: "login",
+    component: LoginComponent,
   },
   {
-    path:"register",
-    component:RegisterComponent
+    path: "register",
+    component: RegisterComponent,
   },
   {
     path: 'dashboard',
     component: PagesComponent,
+    canActivate: [AuthGuard],
     children: [{
       path: '',
-      loadChildren: ()=>PagesModule
+      loadChildren: () => PagesModule
     }]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{useHash:true})],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

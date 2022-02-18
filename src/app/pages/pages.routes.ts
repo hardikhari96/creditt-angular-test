@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { SettingComponent } from './setting/setting.component';
+
 const routes: Routes = [
   {
     path: "",
@@ -9,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: "setting",
-    component: SettingComponent
+    component: SettingComponent,
   },
   {
     path: "manageUser",

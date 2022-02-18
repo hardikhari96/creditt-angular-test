@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { AuthService } from 'src/app/service/auth/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,18 +9,33 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   formgroup = new FormGroup({
-    email: new FormControl("", [Validators.required,Validators.email]),
+    email: new FormControl("", [Validators.required, Validators.email]),
     password: new FormControl("", [Validators.required,])
   })
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router,) { }
 
   ngOnInit(): void {
   }
-  public hasError = (controlName: string, errorName: string) =>{
+  public hasError = (controlName: string, errorName: string) => {
     return this.formgroup.controls[controlName].hasError(errorName);
   }
-  loginUser(){
+  loginUser(): void {
     console.log(this.formgroup.valid);
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.router.navigate(['/dashboard'])
+    } else if (this.formgroup.valid) {
+      this.authService.login(this.formgroup.value).subscribe((res: any) => {
+        console.log(res);
+        if (res.success) {
+          localStorage.setItem('token', res.token);
+          localStorage.setItem("user",JSON.stringify(res.userdata));
+          this.router.navigate(['/dashboard']);
+        } else {
+          alert('wrong cred');
+        }
+      })
+    }
     console.log(this.formgroup.value);
   }
 }

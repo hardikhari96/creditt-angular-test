@@ -1,0 +1,20 @@
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Details">
+    <ng-container *ngTemplateOutlet="userDetailEdit;">
+    </ng-container>
+  </mat-tab>
+  <mat-tab label="Childrens">
+    <ng-container *ngTemplateOutlet="childrenDetials;">
+    </ng-container>
+  </mat-tab>
+</mat-tab-group>
+
+<ng-template #userDetailEdit>
+   <form >
+
+   </form>
+</ng-template>
+
+<ng-template #childrenDetials>
+  i am childrens
+</ng-template>

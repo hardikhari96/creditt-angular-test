@@ -1,13 +1,14 @@
 <mat-nav-list>
-  <h4 class="name">name</h4>
-  <p class="role">Role : user</p>
+  <h4 class="name">{{name}}</h4>
+  <p class="role">Role : {{role}}</p>
   <mat-divider></mat-divider>
-	<a mat-list-item [routerLink]="['setting']" routerLinkActive="active-link">
+	<a mat-list-item [routerLink]="['setting']" *ngIf="allowedUserClass([0,1,2])" routerLinkActive="active-link">
     <mat-icon mat-list-icon>settings</mat-icon>
 		<h4 matLine>setting</h4>
 	</a>
-  <a mat-list-item [routerLink]="['manageUser']" routerLinkActive="active-link">
+  <a mat-list-item [routerLink]="['manageUser']" *ngIf="allowedUserClass([2])"  routerLinkActive="active-link">
     <mat-icon mat-list-icon>person</mat-icon>
 		<h4 matLine>Users</h4>
 	</a>
 </mat-nav-list>
+

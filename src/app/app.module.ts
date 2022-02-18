@@ -18,7 +18,10 @@ import {MatListModule} from '@angular/material/list';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './intercepters/auth.interceptor';
+import { AuthService } from './service/auth/auth.service';
+import { AuthGuard } from './guard/auth/auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     SidebarComponent,
 
+
   ],
   imports: [
     BrowserModule,
@@ -36,13 +40,22 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSidenavModule,
     MatListModule,
     MatButtonModule,
+    HttpClientModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     MatIconModule,
     MatToolbarModule,
     MatInputModule,
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AuthGuard,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:AuthInterceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
