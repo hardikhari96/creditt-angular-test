@@ -12,7 +12,8 @@ export class RegisterComponent implements OnInit {
   formgroup = new FormGroup({
     email: new FormControl("", [Validators.required, Validators.email]),
     password: new FormControl("", [Validators.required,]),
-    name: new FormControl("", [Validators.required,]),
+    name: new FormControl("", [Validators.required]),
+    role: new FormControl("", [Validators.required]),
     mobile: new FormControl("", [Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
   })
   IsResMessage:boolean =true;
@@ -33,6 +34,7 @@ export class RegisterComponent implements OnInit {
         console.log(res,"resss");
         if (res.success) {
           this._snackBar.open(res.message, "ok");
+          this.formgroup.reset();
         } else {
           this._snackBar.open(res.message, "ok");
         }

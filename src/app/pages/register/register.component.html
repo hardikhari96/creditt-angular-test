@@ -31,6 +31,16 @@
         <mat-error *ngIf="hasError('password', 'required')"> Please Enter Password</mat-error>
       </mat-form-field>
 
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>User Role</mat-label>
+        <mat-select placeholder="Select Role" formControlName="role">
+          <mat-option value="0">User</mat-option>
+          <mat-option value="1">Manager</mat-option>
+          <mat-option value="2">Admin</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
       <button mat-raised-button color="primary" style="margin: 0px;" type="submit"> Register</button>
       <mat-divider></mat-divider>
       <button mat-raised-button color="accent" [routerLink]="['/login']"> Login</button>

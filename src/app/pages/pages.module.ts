@@ -19,6 +19,7 @@ import { AuthGuard } from '../guard/auth/auth.guard';
 import { PagesComponent } from './pages.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ConformationComponent } from '../dialog/conformation/conformation.component';
+
 @NgModule({
   declarations: [
     ManageUsersComponent,
