@@ -1,22 +1,23 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConformationComponent } from 'src/app/dialog/conformation/conformation.component';
 import { confirmatinDialog } from 'src/app/interfaces/dialogs.if';
 import { UserService } from 'src/app/service/user/user.service';
-import { SettingComponent } from '../setting/setting.component';
+
 @Component({
   selector: 'app-manage-users',
   templateUrl: './manage-users.component.html',
   styleUrls: ['./manage-users.component.scss']
 })
 export class ManageUsersComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'mobile_no', 'edit', 'delete'];
+  displayedColumns: string[] = ['id', 'name', 'mobile_no','role', 'edit', 'delete'];
   dataSource = [];
   length: number = 0;
   pageSize: number = 5;
   pageIndex: number = 0;
-  constructor(private userService: UserService, public dialog: MatDialog) {
+  constructor(private userService: UserService, public dialog: MatDialog,private snackbar:MatSnackBar) {
   }
   ngOnInit(): void {
     this.fetchUserList({ offset: this.pageIndex * this.pageSize, limit: this.pageSize });
@@ -50,7 +51,14 @@ export class ManageUsersComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
       if (result) {
-        this.fetchUserList({ offset: this.pageIndex * this.pageSize, limit: this.pageSize });
+        this.userService.deleteUser(user.id).subscribe((res:any)=>{
+          if (res.success) {
+            this.fetchUserList({ offset: this.pageIndex * this.pageSize, limit: this.pageSize });
+            this.snackbar.open(res.message,"ok");
+          } else {
+            this.snackbar.open(res.message,"ok");
+          }
+        })
       }
     });
   }

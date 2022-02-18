@@ -11,4 +11,7 @@ export class UserService {
   fetchUserList(data:any){
     return this.http_req.post(`${environment.base_url}/web/user/list`,data);
   }
+  deleteUser(id:number){
+    return this.http_req.get(`${environment.base_url}/web/user/delete/${id}`);
+  }
 }
