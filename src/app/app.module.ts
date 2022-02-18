@@ -15,6 +15,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,8 +36,11 @@ import {MatListModule} from '@angular/material/list';
     MatSidenavModule,
     MatListModule,
     MatButtonModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
     MatIconModule,
     MatToolbarModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
