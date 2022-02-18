@@ -22,6 +22,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './intercepters/auth.interceptor';
 import { AuthService } from './service/auth/auth.service';
 import { AuthGuard } from './guard/auth/auth.guard';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import { AuthGuard } from './guard/auth/auth.guard';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatSnackBarModule,
     MatSidenavModule,
     MatListModule,
     MatButtonModule,
@@ -49,12 +51,7 @@ import { AuthGuard } from './guard/auth/auth.guard';
   ],
   providers: [
     AuthService,
-    AuthGuard,
-    {
-      provide:HTTP_INTERCEPTORS,
-      useClass:AuthInterceptor,
-      multi:true
-    }
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

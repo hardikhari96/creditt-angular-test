@@ -10,6 +10,8 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDialogModule} from '@angular/material/dialog';
 import { EditUserDetaisComponent } from '../components/edit-user-detais/edit-user-detais.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from '../intercepters/auth.interceptor';
 @NgModule({
   declarations: [
     ManageUsersComponent,
@@ -23,7 +25,15 @@ import { EditUserDetaisComponent } from '../components/edit-user-detais/edit-use
     MatButtonModule,
     MatDialogModule,
     MatDividerModule,
+
     RouterModule.forChild(routes)
+  ],
+  providers:[
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:AuthInterceptor,
+      multi:true
+    }
   ]
 })
 export class PagesModule { }

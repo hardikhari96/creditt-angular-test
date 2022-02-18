@@ -13,7 +13,6 @@ export class SidebarComponent implements OnInit {
   navItems: any = [];
   userData: any;
   ngOnInit(): void {
-
     var userDataString = localStorage.getItem("user");
     if (userDataString) {
       this.userData = JSON.parse(userDataString);

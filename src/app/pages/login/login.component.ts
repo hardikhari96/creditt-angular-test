@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/service/auth/auth.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
     email: new FormControl("", [Validators.required, Validators.email]),
     password: new FormControl("", [Validators.required,])
   })
-  constructor(private authService: AuthService, private router: Router,) { }
+  constructor(private authService: AuthService, private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -29,13 +30,12 @@ export class LoginComponent implements OnInit {
         console.log(res);
         if (res.success) {
           localStorage.setItem('token', res.token);
-          localStorage.setItem("user",JSON.stringify(res.userdata));
+          localStorage.setItem("user", JSON.stringify(res.userdata));
           this.router.navigate(['/dashboard']);
         } else {
-          alert('wrong cred');
+          this._snackBar.open(res.message, "ok")
         }
       })
     }
-    console.log(this.formgroup.value);
   }
 }

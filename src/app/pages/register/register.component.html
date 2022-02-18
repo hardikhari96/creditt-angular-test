@@ -6,17 +6,17 @@
 
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Name</mat-label>
-        <input matInput placeholder="Name here" required formControlName="name">
+        <input matInput placeholder="Name here" type="text" required formControlName="name">
         <mat-error *ngIf="hasError('name', 'required')"> Please Enter Name</mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Mobile No</mat-label>
         <input matInput #input type="number" maxlength="10" class="example-right-align" required placeholder="Mobile No"
-          formControlName="phone">
+          formControlName="mobile">
         <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
         <span class="mobileprefix" matPrefix>+91</span>
-        <mat-error *ngIf="hasError('phone', 'required')"> Please Enter Mobile Number</mat-error>
+        <mat-error *ngIf="hasError('mobile', 'required')"> Please Enter Mobile Number</mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width" appearance="outline">
@@ -31,7 +31,7 @@
         <mat-error *ngIf="hasError('password', 'required')"> Please Enter Password</mat-error>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit"> Register</button>
+      <button mat-raised-button color="primary" style="margin: 0px;" type="submit"> Register</button>
       <mat-divider></mat-divider>
       <button mat-raised-button color="accent" [routerLink]="['/login']"> Login</button>
     </form>
