@@ -51,6 +51,7 @@ import { ForoforComponent } from './components/forofor/forofor.component';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

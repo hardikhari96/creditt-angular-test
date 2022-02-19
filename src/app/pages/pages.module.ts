@@ -13,13 +13,16 @@ import { EditUserDetaisComponent } from '../components/edit-user-detais/edit-use
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../intercepters/auth.interceptor';
 import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { AuthService } from '../service/auth/auth.service';
+import { MatInputModule } from '@angular/material/input';
 import { AuthGuard } from '../guard/auth/auth.guard';
 import { PagesComponent } from './pages.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ConformationComponent } from '../dialog/conformation/conformation.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatGridListModule} from '@angular/material/grid-list';
 @NgModule({
   declarations: [
     ManageUsersComponent,
@@ -32,6 +35,9 @@ import { ConformationComponent } from '../dialog/conformation/conformation.compo
     MatTabsModule,
     CommonModule,
     MatListModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
     MatButtonModule,
     MatDialogModule,
     HttpClientModule,
@@ -40,6 +46,7 @@ import { ConformationComponent } from '../dialog/conformation/conformation.compo
     MatIconModule,
     MatPaginatorModule,
     RouterModule.forChild(routes),
+    MatGridListModule,
   ],
   providers: [
     AuthService,

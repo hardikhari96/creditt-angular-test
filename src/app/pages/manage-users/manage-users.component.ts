@@ -12,12 +12,12 @@ import { UserService } from 'src/app/service/user/user.service';
   styleUrls: ['./manage-users.component.scss']
 })
 export class ManageUsersComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'mobile_no','role', 'edit', 'delete'];
+  displayedColumns: string[] = ['id', 'name', 'mobile_no', 'role', 'edit', 'delete'];
   dataSource = [];
   length: number = 0;
   pageSize: number = 5;
   pageIndex: number = 0;
-  constructor(private userService: UserService, public dialog: MatDialog,private snackbar:MatSnackBar) {
+  constructor(private userService: UserService, public dialog: MatDialog, private snackbar: MatSnackBar) {
   }
   ngOnInit(): void {
     this.fetchUserList({ offset: this.pageIndex * this.pageSize, limit: this.pageSize });
@@ -38,6 +38,8 @@ export class ManageUsersComponent implements OnInit {
   }
   editUser(id: number) {
     this.dialog.open(EditUserDialog, {
+      panelClass: 'custom-dialog-container',
+      width:"100%",
       data: id
     });
   }
@@ -51,12 +53,12 @@ export class ManageUsersComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
       if (result) {
-        this.userService.deleteUser(user.id).subscribe((res:any)=>{
+        this.userService.deleteUser(user.id).subscribe((res: any) => {
           if (res.success) {
             this.fetchUserList({ offset: this.pageIndex * this.pageSize, limit: this.pageSize });
-            this.snackbar.open(res.message,"ok");
+            this.snackbar.open(res.message, "ok");
           } else {
-            this.snackbar.open(res.message,"ok");
+            this.snackbar.open(res.message, "ok");
           }
         })
       }

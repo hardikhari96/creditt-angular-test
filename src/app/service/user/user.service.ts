@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { userChildrenAdd, userChildrenListFetch } from 'src/app/interfaces/user.if';
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +14,14 @@ export class UserService {
   }
   deleteUser(id:number){
     return this.http_req.get(`${environment.base_url}/web/user/delete/${id}`);
+  }
+  addChildren(data:userChildrenAdd){
+    return this.http_req.post(`${environment.base_url}/web/user/children/add`,data);
+  }
+  fetchChildrenList(data:userChildrenListFetch){
+    return this.http_req.post(`${environment.base_url}/web/user/children/list`,data);
+  }
+  removeChildren(data:any){
+    return this.http_req.post(`${environment.base_url}/web/user/children/delete`,data);
   }
 }
