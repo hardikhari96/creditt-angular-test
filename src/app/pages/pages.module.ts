@@ -23,13 +23,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { ConformationComponent } from '../dialog/conformation/conformation.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { EditChildrensComponent } from '../components/edit-childrens/edit-childrens.component';
 @NgModule({
   declarations: [
     ManageUsersComponent,
     SettingComponent,
     EditUserDetaisComponent,
     EditUserDialog,
-    ConformationComponent
+    ConformationComponent,
+    EditChildrensComponent
   ],
   imports: [
     MatTabsModule,

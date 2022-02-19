@@ -39,7 +39,7 @@ export class ManageUsersComponent implements OnInit {
   editUser(id: number) {
     this.dialog.open(EditUserDialog, {
       panelClass: 'custom-dialog-container',
-      width:"100%",
+      width: "100%",
       data: id
     });
   }
@@ -69,7 +69,14 @@ export class ManageUsersComponent implements OnInit {
 @Component({
   selector: 'dialog-content-example-dialog',
   template: `
-    <app-edit-user-detais [userid]="id"></app-edit-user-detais>`
+  <mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Details">
+    <app-edit-user-detais [userid]="id"></app-edit-user-detais>
+  </mat-tab>
+  <mat-tab label="Childrens">
+    <app-edit-childrens [userid]="id"></app-edit-childrens>
+  </mat-tab>
+</mat-tab-group>`
 })
 export class EditUserDialog {
   id = 0;
