@@ -1,11 +1,18 @@
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
+import { ProfileComponent } from './profile/profile.component';
 import { SettingComponent } from './setting/setting.component';
 
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "dashboard",
+    redirectTo: "home",
+    pathMatch: 'full'
+  },
+  {
+    path: "dashboard",
+    redirectTo: "home",
     pathMatch: 'full'
   },
   {
@@ -17,8 +24,12 @@ const routes: Routes = [
     component: ManageUsersComponent
   },
   {
-    path: "",
-    component: SettingComponent
+    path: "profile",
+    component: ProfileComponent
+  },
+  {
+    path: "home",
+    component: HomeComponent
   }
 
 ];

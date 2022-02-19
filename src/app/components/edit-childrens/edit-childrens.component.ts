@@ -59,9 +59,10 @@ export class EditChildrensComponent implements OnInit {
   addNewform(data = { id: "", name: "", age: "" }) {
     const children = this.formbuilder.group({
       id: new FormControl(data.id, []),
-      name: new FormControl(data.name, [Validators.required]),
+      name: new FormControl(data.name, [Validators.required],),
       age: new FormControl(data.age, Validators.required)
     })
+   this.childrens.disable({onlySelf:true});
     this.childrens.push(children);
     this.updateTable();
   }
