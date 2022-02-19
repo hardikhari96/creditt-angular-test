@@ -23,7 +23,7 @@ export class EditUserDetaisComponent implements OnInit {
     mobile: new FormControl("", [Validators.required]),
     role: new FormControl("", [Validators.required])
   })
-  contentstatus:boolean = false;
+  contentstatus: boolean = false;
   ngOnInit(): void {
     this.fetchUserDetail()
   }
@@ -37,7 +37,7 @@ export class EditUserDetaisComponent implements OnInit {
           gender: new FormControl(res.data.gender, [Validators.required]),
           email: new FormControl(res.data.email, [Validators.email, Validators.required]),
           mobile: new FormControl(res.data.mobile_no, [Validators.required]),
-          role: new FormControl(res.data.role+"", [Validators.required])
+          role: new FormControl(res.data.role + "", [Validators.required])
         })
         this.contentstatus = true;
       }
